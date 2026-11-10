@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.json",
+  "name": "diariobug",
+  "description": "Testing skills from Diario Bug: plan tests by level and type, audit dependency resilience, design a regression strategy, review requirements, designs and test plans.",
+  "version": "1.1.0",
+  "license": "CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)",
+  "author": {
+    "name": "Diario Bug",
+    "url": "https://diariobug.com"
+  },
+  "homepage": "https://diariobug.com/recursos/",
+  "repository": "https://github.com/diariobug/marketplace"
+}
