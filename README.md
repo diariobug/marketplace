@@ -55,6 +55,26 @@ directory, or paste `SKILL.md` plus its `references/` and `workflows/` into
 your project's instructions. The subscriber kits on diariobug.com bundle the
 same folders with a PDF method guide.
 
+## En español: cómo instalar los skills
+
+Los skills son gratuitos para todos. En **Claude Code**:
+
+```sh
+/plugin marketplace add diariobug/marketplace
+/plugin install diariobug@diariobug
+```
+
+El plugin instala los cuatro skills; actualízalo después con `/plugin update diariobug`.
+
+**Con otro agente de código** que admita skills: descarga este repositorio
+([ZIP](https://github.com/diariobug/marketplace/archive/refs/heads/main.zip)) y copia la
+carpeta del skill que quieras, por ejemplo `plugins/diariobug/skills/testing-by-level-and-type/`,
+a la carpeta de skills de tu agente. Si tu agente no admite skills, agrega el contenido de
+`SKILL.md`, con sus carpetas `references/` y `workflows/`, a las instrucciones de tu proyecto.
+
+Los kits completos, con la guía del método en PDF y las hojas de trabajo, son gratuitos
+para suscriptores: [diariobug.com/recursos/](https://diariobug.com/recursos/).
+
 ## Privacy
 
 The plugin makes no network calls. No telemetry, no tracking — it only reads
