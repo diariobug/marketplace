@@ -1,7 +1,8 @@
 # Assess how an existing test suite covers a module or feature
 
 For "how well do our tests cover X?" with no particular change in view. The output is a
-coverage matrix and the gaps ranked by risk; write no tests. Copy the checklist:
+coverage matrix and the gaps ranked by risk; write no tests. Copy the checklist into your working notes
+(it is never part of the report):
 
 ```
 Assessment progress:

@@ -46,6 +46,12 @@ project beats any generic one.
 Each entry on the list becomes a case with an expected result from the test basis, like any
 other case. Error guessing chooses the inputs; it never decides what is correct.
 
+**Check the guess before it becomes a case.** A guessed failure that can be checked cheaply (a
+floating-point sum, a date parse, what a library does with a long input) is checked by running
+it in the project's language before the case is written. A guess that turns out false designs a
+case that cannot fail, and the reader trusts it anyway. Keep the command and its output as the
+case's evidence; if you cannot run it, mark the case "unverified guess".
+
 ## Exploratory testing with a charter (§4.4.2)
 
 **For:** little or poor specification, time pressure, a new area, and what only a person can

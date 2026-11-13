@@ -1,7 +1,7 @@
 # Plan and write the tests for a change
 
 For a change you are about to write, or have just written and must test. Copy the checklist
-and check it off as you go:
+into your working notes and check it off as you go; it is never part of the report:
 
 ```
 Plan progress:
@@ -43,8 +43,9 @@ external services are faked, how coverage is measured.
 
 **Expected results from a reader who has not seen the code.** Whoever has read the code
 tends to expect what it does. If you can start a subagent with a fresh context, give it only
-the agreed test basis, the confirmed examples and the plan's test cases (never the code, the
-diff or this conversation) and ask it for each case's expected result, citing its source.
+the agreed test basis, the confirmed examples as the user wrote them (not your summary) and
+the plan's test cases (never the code, the diff or this conversation) and ask it for each
+case's expected result, citing its source.
 Those answers are the expected values. Where its answer differs from yours, either the code
 has a defect or the test basis has a gap: ask the user with that case as the example. Without
 subagents, write each expected value down, with its source, before you read the code that

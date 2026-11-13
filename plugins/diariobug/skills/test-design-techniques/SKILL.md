@@ -31,7 +31,7 @@ and this one designs its cases.
 
 ## The workflow
 
-Copy the checklist and check it off as you go:
+Copy the checklist into your working notes and check it off as you go; it is never part of the report:
 
 ```
 Test design progress:
@@ -82,10 +82,11 @@ cover.
 
 **6. Expected results without the code.** Each case's expected result comes from the test basis
 or from an answer the user confirmed, and names its source. If you can start a subagent with a
-fresh context, give it only the test basis, the confirmed answers and the case inputs (never
-the code, the diff or this conversation) and use its expected results; a disagreement with
-yours is a defect or a gap, so ask. Without subagents, write each expected result down before
-reading the code that computes it.
+fresh context, give it only the test basis and the user's answers as they were written (not
+your summary of them, which carries your reading) and the case inputs (never the code, the
+diff or this conversation), and use its expected results; a disagreement with yours is a
+defect or a gap, so ask. Without subagents, write each expected result down before reading
+the code that computes it.
 
 **7. Coverage.** Report the coverage of each technique as the syllabus defines it: items
 exercised over items identified. When the code exists, run the cases with branch coverage and
@@ -94,14 +95,28 @@ mentioned (ask about it) or dead code (propose deleting it). Do not add cases on
 branch; add the case the test basis says that branch is for. Diario Bug explains why, in
 Spanish: https://diariobug.com/cobertura-de-codigo/
 
-**8. Report** in the format below.
+**8. Report** in the format below, and nothing else: each table appears once, and no
+progress checklist or restatement of earlier sections. The questions are written in full once,
+in "Questions raised by the design"; everywhere else, including after the user answers,
+refer to them by ID (Q3). A reader should find each fact in one place. Every section of the
+template is required; write "none" in a section that has nothing, so the reader knows it was
+considered.
 
 ## Report format
 
 ````markdown
 ## Test design — <test object>
 
-Test basis: <sources, and the answers the user confirmed>.
+Test basis: <sources>. Answers: see Questions (by ID).
+
+### Questions raised by the design
+| ID | Question, with its example | Proposed answer | User's answer | Cases it changed |
+|---|---|---|---|---|
+
+### Findings
+<Where the code, a document or an answer contradicts the agreed test basis. Each one stated as
+a defect, not as a possibility: what the basis says, what the code does (file:line), and the
+case that will fail. "None" if the code was not read or nothing contradicts the basis.>
 
 ### Parts and techniques
 | Part | Shape | Technique | Why |
@@ -120,8 +135,18 @@ Test basis: <sources, and the answers the user confirmed>.
 |---|---|---|---|
 <Branch coverage, when the code exists: branches not reached and what each one is.>
 
-### Questions raised by the design
-<Each with its example, the user's answer, and the cases it changed.>
+### Independent expected results
+<If a fresh-context subagent derived them: the exact text it was given (or the files, by path),
+then a table of every case where its expected result differed from yours and how it was
+settled. "Disagreements: none" only after that text. If no subagent was used: "Not used;
+expected results written before reading the code" or the reason.>
+
+### Evidence
+| Claim the design relies on | Command run | Output |
+|---|---|---|
+<Every computed value, encoding or byte count, library or language behavior, and every claim
+about what the code does, with the command and its literal output. A claim without a row is
+marked "unverified guess" where it is used.>
 
 ### Not designed, and why
 <Combinations, transitions or partitions left out, each with the reason.>
@@ -174,6 +199,9 @@ Test basis: <sources, and the answers the user confirmed>.
 - A decision table whose number of columns nobody can explain.
 - No questions raised: either the test basis was unusually complete, or the design did not
   read it closely.
+- A case built on a claimed failure ("this sum rounds below 50", "this library truncates")
+  that nobody ran.
+- The same table or question list shown twice.
 
 ## Before you report
 
@@ -183,4 +211,8 @@ Show the evidence; do not describe it:
 - The numbered coverage items and, for each case, the items it covers and the source of its
   expected result.
 - The coverage per technique, and branch coverage when the code exists.
+- If a fresh-context subagent derived the expected results: what it was given, and each case
+  where it disagreed with you and how that was settled. "It agreed" with nothing to check is a
+  claim, not evidence.
+- For every case that rests on a claimed failure mode, the command you ran and its output.
 - What was not designed, and why.

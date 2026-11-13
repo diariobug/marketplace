@@ -117,4 +117,6 @@ Show the evidence; do not describe it:
   on purpose to see it fail.
 - The suite run with branch coverage: the changed branches reached, and the ones not reached
   with why.
+- If a fresh-context subagent derived expected values: what it was given, and each
+  disagreement with how it was settled.
 - Each exit criterion, met or not, and the residual risk left to the user.

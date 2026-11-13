@@ -1,7 +1,7 @@
 # Review an artifact (or a set of them)
 
 For a reviewer: someone else's PRD, design, test plan or PR, or several that must agree with
-each other. Copy the checklist and check it off as you go:
+each other. Copy the checklist into your working notes and check it off as you go; it is never part of the report:
 
 ```
 Review progress:

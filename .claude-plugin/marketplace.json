@@ -10,7 +10,7 @@
     {
       "name": "diariobug",
       "description": "Testing skills from Diario Bug: plan tests by level and type, design test cases with partitions, boundaries, decision tables and state transitions, audit dependency resilience, design a regression strategy, review requirements, designs and test plans.",
-      "version": "1.3.0",
+      "version": "1.3.1",
       "source": "./plugins/diariobug",
       "homepage": "https://diariobug.com/recursos/",
       "repository": "https://github.com/diariobug/marketplace",

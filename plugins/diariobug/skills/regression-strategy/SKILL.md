@@ -48,7 +48,7 @@ with a one-line suggestion, and do not fold it into the gates.
 
 ## The workflow
 
-Copy the checklist and check it off as you go:
+Copy the checklist into your working notes and check it off as you go; it is never part of the report:
 
 ```
 Regression strategy progress:

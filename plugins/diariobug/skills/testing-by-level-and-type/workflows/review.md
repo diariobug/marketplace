@@ -1,7 +1,8 @@
 # Review the tests of a change that already happened
 
 For a diff, a commit or a pull request whose code and tests exist. The output is the review;
-write no tests unless the user asks afterwards. Copy the checklist:
+write no tests unless the user asks afterwards. Copy the checklist into your working notes
+(it is never part of the report):
 
 ```
 Review progress:
