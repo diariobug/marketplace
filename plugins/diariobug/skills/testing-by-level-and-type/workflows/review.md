@@ -31,7 +31,10 @@ other cases, the same callers.
 **5. Map the rows.** For each row, the existing test that covers it, by name, and whether it
 really does: a test of the right behavior at the wrong level, or with mocks where the risk
 needs real collaborators, does not count. Mark each row ✅ covered, ❌ not covered, or ⚠️
-evidence only (a model's judgment, a manual run).
+evidence only (a model's judgment, a manual run). A test also does not count when its expected
+value is not the one the test basis gives: check each against the basis, not against what
+the code returns. A fresh-context subagent given only the test basis and the test's inputs,
+never the code or the diff, is the most independent check of that value.
 
 **6. Probe the gaps.** For a ❌ row whose behavior you can exercise cheaply, run it now on a
 few inputs from the test basis: a one-off script or an interactive call, not a committed

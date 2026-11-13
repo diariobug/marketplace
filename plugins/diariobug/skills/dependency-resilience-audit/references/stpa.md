@@ -7,6 +7,14 @@ handbook has four steps — define the purpose (losses, hazards), model the cont
 identify unsafe control actions, identify loss scenarios. This file adapts each one to the
 boundary between a system and the things it depends on.
 
+## Contents
+
+- Vocabulary
+- Step 3 — the control structure
+- Step 4 — unsafe control actions (UCA): inadequate feedback; replies are feedback
+- Step 5 — loss scenarios
+- Worked example (compressed)
+
 ## Vocabulary
 
 - **Loss** — something unacceptable to the people who own the system: users cannot do the core

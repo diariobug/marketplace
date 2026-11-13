@@ -43,7 +43,9 @@ operations each add a lens. Write the choice down:
 **4. Run each lens.** For each chosen lens, load its file from `references/lenses/`, apply its
 checklist to the artifact, and record findings in the format of `references/findings.md`. Keep
 each lens's pass separate. With subagents available, run one per lens in parallel, each given
-the lens file, the artifacts and the rules in full, and the objective.
+the lens file, the artifacts and the rules in full, and the objective, and nothing from this
+conversation: a reviewer who has not heard the author's explanations reads only what the
+artifact says, which is all its readers will have.
 
 **5. Verify.** Re-read each finding against the text it quotes. Drop a finding when the quote
 does not say what the finding claims, when another part of the artifact answers it, or when

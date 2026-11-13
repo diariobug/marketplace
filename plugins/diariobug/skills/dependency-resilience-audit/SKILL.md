@@ -1,6 +1,6 @@
 ---
 name: dependency-resilience-audit
-description: Analyze how a system can lose because of what it does not control — SDKs, external APIs, cloud services, remote configuration, third-party scripts, packages — using an STPA-based control analysis of each dependency boundary. Use when adding, upgrading or reviewing a third-party integration, after an incident caused by a dependency, or when the user asks for a dependency resilience, third-party risk or failure-mode review. Produces a report with the control structure, unsafe control actions, loss scenarios backed by code evidence, mitigations and the tests to add. Changes code only when the user asks.
+description: Analyzes how a system can lose because of what it does not control — SDKs, external APIs, cloud services, remote configuration, third-party scripts, packages — using an STPA-based control analysis of each dependency boundary. Use when adding, upgrading or reviewing a third-party integration, after an incident caused by a dependency, or when the user asks for a dependency resilience, third-party risk or failure-mode review. Produces a report with the control structure, unsafe control actions, loss scenarios backed by code evidence, mitigations and the tests to add. Changes code only when the user asks.
 license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ---
 
@@ -135,3 +135,33 @@ flowchart TB
 ## Suggested changes
 <Ordered. Nothing has been changed yet.>
 ````
+
+## Excuses that weaken the audit
+
+| The thought | Why it fails |
+|---|---|
+| "There is a `try/catch` around the call, so the failure is handled." | It reaches only failures on that call's own path. A crash in the dependency's threads, native code or startup passes it by. |
+| "The vendor surely rolls out gradually and has an SLA." | The code cannot show it. It is an unknown in the diagram and a question in the report. |
+| "To be thorough, every dependency gets an entry." | A long shallow list hides the boundary that can sink the system. Analyze at most five to the end. |
+| "The losses are obvious from the code." | Losses are a product decision. Propose them; the user confirms. |
+| "A retry fixes it." | Only for failures that pass on their own. Against a malformed configuration or a crash at launch, a retry repeats the loss. Every mitigation says what it does not protect against. |
+| "While I am here, I will add the guard." | Report first. The user decides which changes are worth their cost. |
+
+## Signs it went wrong
+
+- A claim about the system with no file and line, and not marked as unknown.
+- A mitigation that cannot reach the failure it claims to stop.
+- A scenario that leads to no confirmed loss.
+- A feedback path never asked "received but not acted on".
+- A test that mocks our own code instead of standing in for the dependency.
+- Code changed before the user read the report.
+
+## Before you report
+
+Show the evidence; do not describe it:
+- The losses as the user confirmed them.
+- Every element of the control structure marked evidenced (file:line) or unknown.
+- Every loss scenario with its evidence and what currently stands in the way.
+- Every mitigation with the scenario it prevents and what it does not protect against.
+- The boundaries and actions left out by the budget, and why.
+- The questions for the team; nothing changed yet.

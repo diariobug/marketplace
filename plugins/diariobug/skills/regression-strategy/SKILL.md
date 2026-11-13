@@ -1,6 +1,6 @@
 ---
 name: regression-strategy
-description: Design or review the regression strategy of a repository, deciding which tests run where, when and how, so the suite stays fast, stable and trusted as it grows. Use when CI is slow, when tests pass and fail with the same code, when someone asks which tests should run on a pull request, when setting up nightly or scheduled runs, or when the user asks for a regression strategy or a test-suite health review. Measures the inventory, assigns each test to a gate, picks the simplest selection mechanism that works at this scale, and sets health rules. Produces a report; changes CI configuration only when the user asks.
+description: Designs or reviews the regression strategy of a repository, deciding which tests run where, when and how, so the suite stays fast, stable and trusted as it grows. Use when CI is slow, when tests pass and fail with the same code, when someone asks which tests should run on a pull request, when setting up nightly or scheduled runs, or when the user asks for a regression strategy or a test-suite health review. Measures the inventory, assigns each test to a gate, picks the simplest selection mechanism that works at this scale, and sets health rules. Produces a report; changes CI configuration only when the user asks.
 license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ---
 
@@ -157,3 +157,34 @@ In this order:
 
 Changes to CI configuration, markers or quarantine lists are made only when the user asks,
 and shown as a diff.
+
+## Excuses that weaken the strategy
+
+| The thought | Why it fails |
+|---|---|
+| "The suite takes about twenty minutes, I would guess." | A guessed number decides gates nobody can check. Take it from CI or the test reports, or ask. |
+| "Large companies use predictive selection, so should we." | A mechanism built for thousands of developers costs more than it saves at this scale. Start with the simplest one that works. |
+| "Re-run the flaky test until it passes." | Each re-run teaches the team to ignore red. Quarantine it, with a limit. |
+| "Keep every test; deleting one is risky." | A test that protects nothing costs every run and every reader. One that lies is worse than none. |
+| "To make CI fast, run fewer tests." | The goal is to run each test in the gate whose tolerances it meets, with a fallback that still runs everything. |
+| "Google recommends 80/15/5 test sizes." | Google's mix is about scope, not size. Cite sources as they are written. |
+| "The expired API key is a regression failure." | It is monitoring. Mention it under what was not assessed. |
+
+## Signs it went wrong
+
+- A number in the report with no source.
+- A slow or flaky test in a gate that blocks work.
+- A selection mechanism with no fallback.
+- A quarantine with no time limit.
+- Thresholds presented as standards instead of defaults from experience.
+- CI configuration changed without the user asking.
+
+## Before you report
+
+Show the evidence; do not describe it:
+- Each number with where it came from, and the data that was missing.
+- The scale (A or B) and why.
+- The gate table with each group's measured duration and flakiness.
+- The pull-request selection mechanism and its fallback.
+- The health rules: the quarantine list, its limit, the tests to delete or rewrite.
+- What was not assessed, and why.

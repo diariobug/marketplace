@@ -27,14 +27,7 @@ Add a lens when the artifact, or what it changes, involves:
 
 ## Lens files
 
-- [lenses/consistency.md](lenses/consistency.md): contradictions, ambiguity, gaps, reviewability
-- [lenses/testability.md](lenses/testability.md): can each claim be verified, and how
-- [lenses/traceability.md](lenses/traceability.md): drift between artifacts in a chain
-- [lenses/architecture.md](lenses/architecture.md): conformance to the project's own rules
-- [lenses/security.md](lenses/security.md)
-- [lenses/performance.md](lenses/performance.md)
-- [lenses/reliability.md](lenses/reliability.md)
-- [lenses/operability.md](lenses/operability.md)
+Each lens has its own file in `references/lenses/`, listed in `SKILL.md`.
 
 The quality lenses follow the product quality characteristics of ISO/IEC 25010:2023 (security,
 performance efficiency, reliability, maintainability…), so the set can grow by characteristic

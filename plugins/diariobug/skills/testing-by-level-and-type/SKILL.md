@@ -82,3 +82,39 @@ are not the stakeholders.
 - Changing an existing test's expected value to make it pass, without the test basis saying
   the old value was wrong.
 - Filling a gap in the test basis yourself instead of asking with an example.
+
+## Excuses that lead to a weak plan
+
+| The thought | Why it fails |
+|---|---|
+| "The code makes the intended behavior clear." | The code shows what it does. An expected value taken from it passes on the very defect it should catch. |
+| "The sources look complete; asking would slow the user down." | A gap is invisible from inside your own reading. A question with an example costs the user seconds; a wrong expected value stays in the suite for years. |
+| "Mocking the database keeps it a fast component test." | If the risk is in the query or in the data crossing the interface, the mock removes what was under test. Test it where the risk is, and name the level honestly. |
+| "The end-to-end test already covers it." | It sees that something failed, not where, and it is the slowest place to find out. The risk belongs at the earliest level that can see it. |
+| "Coverage is high, so it is tested." | Coverage says what ran, not what was checked, and it cannot see a rule nobody programmed. |
+| "This risk is low; I will leave it out." | Leaving it out can be right; leaving it unlisted never is. Without a row, nobody can tell a decision from an oversight. |
+| "The exit criteria are almost met; I will call it done." | Accepting what is left is the stakeholders' call (§5.1.3). Write the residual risk down and stop. |
+| "The model's answer looked right when I ran it." | That is one recorded run, evidence about judgment, not a test. Test the contract; list the run as evidence. |
+
+## Signs it went wrong
+
+- A new test passed the first time it ran, and nobody has seen it fail.
+- An expected value matches the code's output exactly, and no source or confirmed example
+  gives it.
+- An existing test's expected value changed in the same change as the code it checks.
+- "All tests pass", with no levels or types named.
+- A check that could not run is reported the same way as a check that passed.
+- The plan has no "not covered" row.
+- A test's only assertion is that a mock was called.
+
+## Before you report
+
+Show the evidence; do not describe it:
+- The test basis the user confirmed, with every question asked and its answer.
+- The risk table: every risk with a row, covered or not, and the reason for each "not
+  covered".
+- For each new test, that it failed before it passed: the failing run, or the line you broke
+  on purpose to see it fail.
+- The suite run with branch coverage: the changed branches reached, and the ones not reached
+  with why.
+- Each exit criterion, met or not, and the residual risk left to the user.

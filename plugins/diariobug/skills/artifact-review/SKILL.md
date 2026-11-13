@@ -1,6 +1,6 @@
 ---
 name: artifact-review
-description: Review a written engineering artifact — a product requirements document (PRD), a technical design (design doc, TDD, RFC), an architecture decision record, a test plan, or a pull request read for intent — or a set of them, through focused lenses (consistency and completeness, testability, traceability across artifacts, architecture conformance, security, performance, reliability, operability), then triage the findings so the author gets at most five blocking findings plus notes, and the human review gets a short agenda of questions. Use when asked to review a PRD, spec, design doc, RFC, ADR, test plan or PR description, to check a design against its requirements or the project's architecture rules, to find drift between requirements, design and implementation, to prepare a review meeting, or when an author wants to check their own artifact before sending it for review. Line-by-line code correctness is for a code-review tool; this reviews what an artifact says and whether it holds together.
+description: Reviews a written engineering artifact — a PRD or requirements, a technical design (design doc, TDD, RFC), an ADR, a test plan, or a pull request read for intent — or a set of them, through focused lenses (consistency, testability, traceability, architecture conformance, security, performance, reliability, operability), then triages the findings into at most five blocking findings for the author, notes, and a short agenda of questions for the human review. Use when asked to review a PRD, spec, design doc, RFC, ADR, test plan or PR description, to check a design against its requirements or the project's architecture rules, to find drift between requirements, design and implementation, to prepare a review meeting, or when authors want to check their own artifact before sending it. Not for line-by-line code correctness, which is a code-review tool's job.
 license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ---
 
@@ -33,8 +33,17 @@ for the objective, findings about the product and never about the person.
 - **Checking your own artifact before sending it**: [workflows/author-check.md](workflows/author-check.md)
 
 Both use the core below, [references/artifacts.md](references/artifacts.md) to choose lenses,
-the lens files in `references/lenses/`, and [references/findings.md](references/findings.md) for
-how findings are verified, ranked and written.
+and [references/findings.md](references/findings.md) for how findings are verified, ranked and
+written. The lenses, one file each:
+
+- [references/lenses/consistency.md](references/lenses/consistency.md): contradictions, ambiguity, gaps, reviewability
+- [references/lenses/testability.md](references/lenses/testability.md): can each claim be verified, and how
+- [references/lenses/traceability.md](references/lenses/traceability.md): drift between artifacts in a chain
+- [references/lenses/architecture.md](references/lenses/architecture.md): conformance to the project's own rules
+- [references/lenses/security.md](references/lenses/security.md)
+- [references/lenses/performance.md](references/lenses/performance.md)
+- [references/lenses/reliability.md](references/lenses/reliability.md)
+- [references/lenses/operability.md](references/lenses/operability.md)
 
 ## Core
 
@@ -83,3 +92,34 @@ artifact may be right and you lack context.
   separate field.
 - Say what you could not check (missing related artifact, no access to the rules, a section too
   large) as part of the coverage, not as a finding.
+
+## Excuses that weaken a review
+
+| The thought | Why it fails |
+|---|---|
+| "I know what the architecture doc says." | Rules change. A review graded against memory grades last month's rules; read the file. |
+| "There are twelve real problems; the author should see all of them." | Authors act on a few. Past five blocking findings the review becomes a list nobody finishes; the rest go to notes. |
+| "Something feels wrong, even if I cannot point to the text." | Then it is a question for the meeting, not a finding. An unanchored finding is the false positive that makes people stop reading reviews. |
+| "The requirement obviously means this." | If the artifact does not say it, ask what was intended. Your reading is one of several. |
+| "One pass with every lens saves time." | Mixed lenses produce findings that belong to none, and the lens nobody ran looks checked. |
+| "I read the first sections; the rest is probably consistent." | Report on what you read. Narrow the scope and say so. |
+| "It is faster if I rewrite the paragraph." | The author owns the text. Suggest the smallest change that resolves the finding. |
+
+## Signs it went wrong
+
+- A finding with no quote and no located absence.
+- A finding about the author ("you forgot…") instead of the artifact.
+- A severity set by how sure you are rather than by the impact on the objective.
+- No list of the lenses left out.
+- More than five blocking findings, or meeting questions that are really more defects.
+- A conformance finding that cites no rule file.
+
+## Before you report
+
+Show the evidence; do not describe it:
+- The review's objective, as the user agreed it.
+- The lenses run, and the lenses left out with the reason for each.
+- Each blocking finding with its quote (or located absence), why it matters, its severity and
+  its confidence.
+- What could not be checked, as part of the coverage.
+- The three to five questions for the human review.

@@ -39,9 +39,18 @@ Update later with `/plugin update diariobug`. Skills are namespaced:
 `/diariobug:testing-by-level-and-type`, `/diariobug:dependency-resilience-audit`,
 `/diariobug:regression-strategy`, `/diariobug:artifact-review`.
 
-## Install (Cline and other agents)
+## Install (Cursor, Codex, Gemini CLI, Copilot and other agents)
 
-The same skill folders work anywhere `SKILL.md` is supported:
+The same skill folders work anywhere `SKILL.md` is supported. With the
+[`skills` CLI](https://github.com/vercel-labs/skills), which installs into
+most coding agents:
+
+```sh
+npx skills add diariobug/marketplace                                  # choose skills and agents
+npx skills add diariobug/marketplace --skill testing-by-level-and-type
+```
+
+With Cline:
 
 ```sh
 cline skill install https://github.com/diariobug/marketplace --skill testing-by-level-and-type
@@ -66,7 +75,9 @@ Los skills son gratuitos para todos. En **Claude Code**:
 
 El plugin instala los cuatro skills; actualízalo después con `/plugin update diariobug`.
 
-**Con otro agente de código** que admita skills: descarga este repositorio
+**Con Cursor, Codex, Gemini CLI, Copilot u otro agente de código**, el comando
+`npx skills add diariobug/marketplace` te deja elegir los skills y el agente donde instalarlos.
+Sin Node.js, descarga este repositorio
 ([ZIP](https://github.com/diariobug/marketplace/archive/refs/heads/main.zip)) y copia la
 carpeta del skill que quieras, por ejemplo `plugins/diariobug/skills/testing-by-level-and-type/`,
 a la carpeta de skills de tu agente. Si tu agente no admite skills, agrega el contenido de
