@@ -10,7 +10,7 @@
     {
       "name": "diariobug",
       "description": "Testing skills from Diario Bug: plan tests by level and type, audit dependency resilience, design a regression strategy, review requirements, designs and test plans.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "source": "./plugins/diariobug",
       "homepage": "https://diariobug.com/recursos/",
       "repository": "https://github.com/diariobug/marketplace",
