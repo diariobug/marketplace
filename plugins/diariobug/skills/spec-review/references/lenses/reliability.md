@@ -36,7 +36,7 @@ succeeds") the design does not decide.
 ## Cannot see
 
 How the real dependencies behave. For a deeper analysis of each dependency boundary, use the
-`dependency-resilience-audit` skill in this plugin.
+`dependency-failures` skill in this plugin.
 
 ## Common false positives
 

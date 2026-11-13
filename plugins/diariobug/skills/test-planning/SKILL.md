@@ -1,10 +1,10 @@
 ---
-name: testing-by-level-and-type
+name: test-planning
 description: Decides what testing a change or a codebase needs by test level (component, component integration, system, system integration, acceptance) and test type (functional, non-functional, black-box, white-box), with the test basis agreed with the user and risks ranked by likelihood and impact. Use it whenever code that will need tests is being written or changed - a new feature, command, endpoint or bug fix - even when the request only says to build or fix it and never mentions tests; the tests are planned here, with the user, before they are written. Also for reviewing the tests of a change that already happened ("is this PR tested enough?", "review the tests of this commit") and for assessing how an existing test suite covers a module or feature ("how well do our tests cover X?", "where are our testing gaps?"). Produces a risk-ranked plan or matrix with an explicit "not covered, and why" and leaves residual risk to a person.
 license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ---
 
-# Testing by level and type
+# Test planning, by level and type
 
 A free resource from Diario Bug (https://diariobug.com), licensed under CC BY-NC-SA 4.0:
 share and adapt it for non-commercial use, crediting Diario Bug, under the same license.
@@ -22,6 +22,26 @@ Read the one file that matches the task, then follow its checklist:
 All three use the core below. [references/levels-and-types.md](references/levels-and-types.md)
 says what each level sees and cannot see; [references/worked-example.md](references/worked-example.md)
 is a complete plan for one change.
+
+## Hand off to the other Diario Bug skills
+
+This skill is the entry point: it decides what testing a change needs and where each risk
+belongs. When another Diario Bug skill is installed, hand it the part it owns, and say in the
+plan which rows went where:
+
+- **The cases of a row** (which inputs, values, combinations, sequences): `test-design`.
+- **A risk at a boundary the project does not control** (an SDK, an external API, a cloud
+  service, remote configuration, a third-party script): `dependency-failures` analyzes how it
+  can fail and derives the tests.
+- **A risk that lives in a document** (requirements that contradict each other, a design that
+  misses a requirement): `spec-review`.
+- **How the tests run once they exist** (which gate, slow or flaky tests, CI time):
+  `regression-strategy`.
+- **A test type with a skill of its own** (performance, usability, a migration…), when one is
+  installed: hand it everything specific to that type; the level and the risk stay here.
+
+A skill that is not installed is not a gap in the plan: do that part here, with this skill's
+references.
 
 ## Core
 

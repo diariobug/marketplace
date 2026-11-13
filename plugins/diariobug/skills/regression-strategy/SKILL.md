@@ -21,7 +21,7 @@ team stops trusting it. The answer is not to run less; it is a strategy that dec
 tests run, where, when and how**, with three goals: efficient regression, a stable suite, and
 results the team trusts.
 
-This skill does not decide *what* to test; for that, use `testing-by-level-and-type`. It
+This skill does not decide *what* to test; for that, use `test-planning`. It
 decides how the tests that exist are run.
 
 It also does not cover **operational checks**: whether a production dependency is up, whether

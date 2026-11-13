@@ -37,7 +37,7 @@ the question a tester cannot answer from the artifact.
 ## Cannot see
 
 Whether the planned tests are enough for the risk; that is a test-design question. For planning
-the tests of a change level by level, use the `testing-by-level-and-type` skill in this plugin.
+the tests of a change level by level, use the `test-planning` skill in this plugin.
 
 ## Common false positives
 

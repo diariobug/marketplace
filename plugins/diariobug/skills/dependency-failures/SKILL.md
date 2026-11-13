@@ -1,10 +1,10 @@
 ---
-name: dependency-resilience-audit
+name: dependency-failures
 description: Analyzes how a system can lose because of what it does not control — SDKs, external APIs, cloud services, remote configuration, third-party scripts, packages — using an STPA-based control analysis of each dependency boundary. Use when adding, upgrading or reviewing a third-party integration, after an incident caused by a dependency, or when the user asks for a dependency resilience, third-party risk or failure-mode review. Produces a report with the control structure, unsafe control actions, loss scenarios backed by code evidence, mitigations and the tests to add. Changes code only when the user asks.
 license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ---
 
-# Dependency resilience audit
+# Dependency failures
 
 A free resource from Diario Bug (https://diariobug.com), licensed under CC BY-NC-SA 4.0:
 share and adapt it for non-commercial use, crediting Diario Bug, under the same license.

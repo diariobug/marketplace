@@ -1,10 +1,10 @@
 ---
-name: test-design-techniques
-description: Designs the test cases for a rule, a feature, an input or a workflow with test design techniques — equivalence partitioning, boundary value analysis, decision tables, state transitions, branch coverage, error guessing, exploratory charters and checklists — choosing each technique from the shape of what is tested and taking every expected result from the test basis agreed with the user. Use when deciding which cases and values to test, when asked for edge cases, boundary values or "what inputs should I test", when a business rule combines several conditions, when something moves between states (orders, subscriptions, sessions, approvals), when reviewing whether tests chose their cases well, or after testing-by-level-and-type has placed a risk whose cases must be designed. Produces a case table (each case with its technique, coverage item and source of its expected result), coverage per technique, the questions the design raised, and what was not designed and why.
+name: test-design
+description: Designs the test cases for a rule, a feature, an input or a workflow with test design techniques — equivalence partitioning, boundary value analysis, decision tables, state transitions, branch coverage, error guessing, exploratory charters and checklists — choosing each technique from the shape of what is tested and taking every expected result from the test basis agreed with the user. Use when deciding which cases and values to test, when asked for edge cases, boundary values or "what inputs should I test", when a business rule combines several conditions, when something moves between states (orders, subscriptions, sessions, approvals), when reviewing whether tests chose their cases well, or after test-planning has placed a risk whose cases must be designed. Produces a case table (each case with its technique, coverage item and source of its expected result), coverage per technique, the questions the design raised, and what was not designed and why.
 license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ---
 
-# Test design techniques
+# Test design
 
 A free resource from Diario Bug (https://diariobug.com), licensed under CC BY-NC-SA 4.0:
 share and adapt it for non-commercial use, crediting Diario Bug, under the same license.
@@ -26,8 +26,14 @@ answered ("and at exactly 65?", "and if both conditions hold?"). Those questions
 output, not a detour.
 
 This skill decides **which cases and which values**. Where each test belongs (its level and
-type) is `testing-by-level-and-type`'s job; when both are installed, that skill places the risk
+type) is `test-planning`'s job; when both are installed, that skill places the risk
 and this one designs its cases.
+
+The techniques are not limited to functional testing: a load test has partitions and
+boundaries (payload sizes, concurrent users), and a recovery procedure has states. The examples
+here are functional. For a test type with a skill of its own (performance, usability, a
+migration), that skill owns what is specific to the type, such as workload models or real
+users, and uses these techniques for the cases.
 
 ## The workflow
 

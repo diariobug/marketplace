@@ -6,34 +6,45 @@ first about new skills: [diariobug.com/recursos/](https://diariobug.com/recursos
 
 ## Skills
 
-- **testing-by-level-and-type** — decide what testing a change needs by test
-  level (component, integration, system, acceptance) and type (functional,
-  non-functional, black-box, white-box). Plans new tests, reviews a PR's
-  tests, assesses a module's coverage. Ask your agent things like "is this PR
-  tested enough?" or "plan the tests for this change".
-- **test-design-techniques** — design the cases themselves: equivalence
-  partitions, boundary values, decision tables, state transitions, branch
-  coverage read as a map, error guessing, exploratory charters. Chooses the
-  technique from the shape of the rule, numbers the coverage items, asks
-  about the gaps the design exposes, and takes every expected result from the
-  requirements, never from the code. Ask "what inputs should I test for
-  this?" or "design the tests for this rule".
-- **dependency-resilience-audit** — analyze how your system can fail through
-  what it does not control (SDKs, APIs, cloud services, third-party scripts)
-  with an STPA-based boundary analysis. Produces a report with loss
-  scenarios backed by code evidence, mitigations, and the tests to add.
+**Testing activities** — they apply to any kind of testing.
+
+- **test-planning** — the entry point. Decides what testing a change needs by
+  test level (component, integration, system, acceptance) and type
+  (functional, non-functional, black-box, white-box), and hands parts to the
+  other skills. Plans new tests, reviews a PR's tests, assesses a module's
+  coverage. Ask "is this PR tested enough?" or "plan the tests for this change".
+- **test-design** — design the cases themselves: equivalence partitions,
+  boundary values, decision tables, state transitions, branch coverage read as
+  a map, error guessing, exploratory charters. Chooses the technique from the
+  shape of the rule, asks about the gaps the design exposes, and takes every
+  expected result from the requirements, never from the code. Ask "what inputs
+  should I test for this?" or "design the tests for this rule".
+- **spec-review** — review a requirements document, technical design, ADR,
+  test plan or PR description through focused lenses (consistency,
+  testability, traceability, architecture conformance, security, performance,
+  reliability, operability), then triage: at most five blocking findings for
+  the author and a few questions for the human review. Ask "review this PRD"
+  or "check this design against its requirements".
 - **regression-strategy** — decide which tests run where, when and how, so a
   growing suite stays fast, stable and trusted. Assigns each test to a gate,
   picks the simplest selection mechanism that works at your scale, and sets
   health rules for flaky and slow tests.
-- **artifact-review** — review a requirements document, technical design, ADR,
-  test plan or PR description through focused lenses (consistency,
-  testability, traceability across artifacts, architecture conformance,
-  security, performance, reliability, operability), then triage: at most five
-  blocking findings for the author and a few questions for the human review.
-  Ask "review this PRD" or "check this design against its requirements".
+
+**Specific risks and test types** — what one kind of testing needs beyond the
+activities.
+
+- **dependency-failures** — how your system can fail through what it does not
+  control (SDKs, APIs, cloud services, third-party scripts), with an
+  STPA-based boundary analysis. Produces loss scenarios backed by code
+  evidence, mitigations, and the tests to add.
 
 New skills ship with the articles that teach them; subscribers hear first.
+
+**Renamed in 1.4.0:** `testing-by-level-and-type` → `test-planning`,
+`test-design-techniques` → `test-design`, `artifact-review` → `spec-review`,
+`dependency-resilience-audit` → `dependency-failures`. Claude Code picks up
+the new names on update; with `npx skills` or Cline, remove the old folders
+and add the new ones.
 
 ## Install (Claude Code)
 
@@ -43,9 +54,9 @@ New skills ship with the articles that teach them; subscribers hear first.
 ```
 
 Update later with `/plugin update diariobug`. Skills are namespaced:
-`/diariobug:testing-by-level-and-type`, `/diariobug:test-design-techniques`,
-`/diariobug:dependency-resilience-audit`,
-`/diariobug:regression-strategy`, `/diariobug:artifact-review`.
+`/diariobug:test-planning`, `/diariobug:test-design`, `/diariobug:spec-review`,
+`/diariobug:regression-strategy`, `/diariobug:dependency-failures`. Add a
+workflow after the name: `/diariobug:test-planning review`.
 
 ## Install (Cursor, Codex, Gemini CLI, Copilot and other agents)
 
@@ -55,16 +66,14 @@ most coding agents:
 
 ```sh
 npx skills add diariobug/marketplace                                  # choose skills and agents
-npx skills add diariobug/marketplace --skill testing-by-level-and-type
+npx skills add diariobug/marketplace --skill test-planning
 ```
 
-With Cline:
+With Cline (it installs through the same CLI):
 
 ```sh
-cline skill install https://github.com/diariobug/marketplace --skill testing-by-level-and-type
-cline skill install https://github.com/diariobug/marketplace --skill dependency-resilience-audit
-cline skill install https://github.com/diariobug/marketplace --skill regression-strategy
-cline skill install https://github.com/diariobug/marketplace --skill artifact-review
+cline skill add diariobug/marketplace -g --skill '*' -y    # all skills, for your user
+cline skill update -g                                     # later, to update
 ```
 
 No marketplace support? Copy the skill folder into your agent's skills
@@ -87,7 +96,7 @@ El plugin instala los cinco skills; actualízalo después con `/plugin update di
 `npx skills add diariobug/marketplace` te deja elegir los skills y el agente donde instalarlos.
 Sin Node.js, descarga este repositorio
 ([ZIP](https://github.com/diariobug/marketplace/archive/refs/heads/main.zip)) y copia la
-carpeta del skill que quieras, por ejemplo `plugins/diariobug/skills/testing-by-level-and-type/`,
+carpeta del skill que quieras, por ejemplo `plugins/diariobug/skills/test-planning/`,
 a la carpeta de skills de tu agente. Si tu agente no admite skills, agrega el contenido de
 `SKILL.md`, con sus carpetas `references/` y `workflows/`, a las instrucciones de tu proyecto.
 

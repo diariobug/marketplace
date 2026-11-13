@@ -1,10 +1,10 @@
 ---
-name: artifact-review
+name: spec-review
 description: Reviews a written engineering artifact — a PRD or requirements, a technical design (design doc, TDD, RFC), an ADR, a test plan, or a pull request read for intent — or a set of them, through focused lenses (consistency, testability, traceability, architecture conformance, security, performance, reliability, operability), then triages the findings into at most five blocking findings for the author, notes, and a short agenda of questions for the human review. Use when asked to review a PRD, spec, design doc, RFC, ADR, test plan or PR description, to check a design against its requirements or the project's architecture rules, to find drift between requirements, design and implementation, to prepare a review meeting, or when authors want to check their own artifact before sending it. Not for line-by-line code correctness, which is a code-review tool's job.
 license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ---
 
-# Artifact review
+# Spec review
 
 A free resource from Diario Bug (https://diariobug.com), licensed under CC BY-NC-SA 4.0:
 share and adapt it for non-commercial use, crediting Diario Bug, under the same license.
