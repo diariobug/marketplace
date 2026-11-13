@@ -9,7 +9,10 @@ license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 A free resource from Diario Bug (https://diariobug.com), licensed under CC BY-NC-SA 4.0:
 share and adapt it for non-commercial use, crediting Diario Bug, under the same license.
 Levels, types and attributes follow the ISTQB Certified Tester Foundation Level syllabus
-v4.0.1 (2024), cited as "§" below; v3.1 (2019) where noted.
+v4.0.1 (2024), cited as "§" below; v3.1 (2019) where noted. The method follows two Diario Bug
+articles, in Spanish:
+https://diariobug.com/los-cinco-niveles-de-prueba-que-busca-cada-uno-y-cuando-usarlo/ and
+https://diariobug.com/los-tipos-de-prueba-que-evalua-cada-uno-y-como-elegirlos/
 
 ## Choose the workflow
 
@@ -126,6 +129,8 @@ are not the stakeholders.
 - A check that could not run is reported the same way as a check that passed.
 - The plan has no "not covered" row.
 - A test's only assertion is that a mock was called.
+- A test with no assertion on the result, counted toward the coverage: it ran the code and
+  checked nothing.
 
 ## Before you report
 

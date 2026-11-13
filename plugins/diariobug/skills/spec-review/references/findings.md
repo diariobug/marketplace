@@ -14,6 +14,10 @@
   its own quote and suggestion. **Why:** a finding that bundles three problems makes the
   five-finding cap lenient without saying so, and the author cannot fix or answer one part
   without the others. Merge only the same problem found by two lenses (see Triage).
+- **Suggestion** for a requirement is the rewritten sentence, followed by the case it now
+  decides: "'six items or more' → a cart with exactly five items gets no discount". A
+  rewrite that settles no concrete case has not resolved the finding; a vague word becomes a
+  measurable condition, a boundary says which side its value falls on.
 - **Where** quotes the artifact. An absence names the section where the missing thing belongs.
 - **Problem** is about the artifact, never the author.
 - **Severity** comes from impact on the objective. Blocking: the artifact cannot do its job

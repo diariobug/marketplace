@@ -198,6 +198,7 @@ marked "unverified guess" where it is used.>
 ## Signs it went wrong
 
 - Cases with no coverage item, or coverage items with no case.
+- A case with no assertion on its expected result: coverage counts it, and it checks nothing.
 - Only valid partitions, only valid transitions.
 - A boundary value taken from the code, or an expected result that matches the code's output
   with no source.

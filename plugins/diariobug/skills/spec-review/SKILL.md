@@ -8,6 +8,9 @@ license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 A free resource from Diario Bug (https://diariobug.com), licensed under CC BY-NC-SA 4.0:
 share and adapt it for non-commercial use, crediting Diario Bug, under the same license.
+The method follows two Diario Bug articles, in Spanish: https://diariobug.com/pruebas-estaticas/
+(what reading finds that running cannot) and https://diariobug.com/revisiones-que-funcionan/
+(why a review's value is decided before the meeting).
 
 ## Why this method
 

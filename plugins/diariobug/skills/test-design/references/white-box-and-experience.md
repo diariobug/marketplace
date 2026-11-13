@@ -2,7 +2,7 @@
 
 ## Contents
 
-- Branch coverage, read as a map
+- Branch coverage, read as a map (and MC/DC for compound decisions)
 - Error guessing and fault attacks
 - Exploratory testing with a charter
 - Checklist-based testing
@@ -26,11 +26,27 @@ omission (§4.3.3).
    - Nothing can reach it: it is probably dead code; propose deleting it.
 4. Branch coverage includes statement coverage, not the reverse (§4.3.2). Report branches, not
    lines.
+5. Read the static analyzer's warnings for the same code (the linter, the type checker):
+   coverage cannot see code that was never written, but an input nobody reads (an unused
+   parameter, a field fetched and ignored) often marks a rule that was never programmed. Ask
+   what that input was for.
 
 **What it cannot see:** a wrong value at a boundary that still takes both branches, a rule
 nobody programmed, and a defect that only shows on a particular path through several
-decisions. A high number is a map of what ran, not a grade. Diario Bug explains it with a
-worked example, in Spanish: https://diariobug.com/cobertura-de-codigo/
+decisions. A high number is a map of what ran, not a grade, and a test with no assertion on the
+result counts as covered. Diario Bug explains it with a worked example, in Spanish:
+https://diariobug.com/cobertura-de-codigo/
+
+**Decisions with several conditions (MC/DC).** In `a or b`, branch coverage is met by one case
+where `a` is true and one where nothing is: `b` never decides, and a defect in `b` passes.
+Modified condition/decision coverage asks for each condition to be shown changing the outcome
+on its own, with the others fixed; for n conditions it usually takes n + 1 cases, not 2ⁿ. Use it
+for compound decisions that carry high risk (Diario Bug's practice; the CTFL syllabus stops at
+branch coverage). Two details:
+- A relational operator hides a condition: `x >= 5` is `x > 5 or x == 5`. MC/DC on that hidden
+  condition asks for exactly `x == 5`, which is the case boundary value analysis gives.
+- MC/DC still says which conditions must decide, not which values to use; the values come from
+  the black-box techniques.
 
 ## Error guessing and fault attacks (§4.4.1)
 

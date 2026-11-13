@@ -22,7 +22,9 @@ included, run each lens on its own, verify each finding against the text.
 **3. Deliver everything.** Unlike a review, there is no cap: this is private, and the author
 wants every finding they can fix before anyone else reads. Rank them, and mark which are
 quick fixes and which need a decision the author cannot make alone; those become questions for
-the review.
+the review. When the author has rewritten the text, read the new version again with the same
+lenses: a rewrite that answers one question often raises another (making a total exact raises
+whether it includes taxes).
 
 **4. The review package.** Help the author make the artifact reviewable. Propose:
 

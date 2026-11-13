@@ -120,3 +120,10 @@ nothing else, in the same component, other components or connected systems.
 | a user task end to end, supported devices or platforms | system | functional; non-functional (compatibility, flexibility) |
 | an external system's answers, errors, timeouts | system integration | functional + non-functional (reliability) |
 | whether the business accepts the result | acceptance (the users') | executable criteria only |
+
+Some risks are cheaper to find without running anything (static testing, §3.1). A requirement
+two readers will build differently goes to a review of the document (`spec-review`, when it
+is installed). In code, unused inputs, unreachable code, wrong types and broken conventions
+are found by the project's linter, type checker or static analyzer, at no test's cost; plan
+them as a check that runs, not as tests. Tune the analyzer's rules rather than accepting its
+noise: a check that raises many false positives teaches the team to ignore it.

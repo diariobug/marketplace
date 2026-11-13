@@ -38,7 +38,7 @@ otherwise:
 
 | Risk of the part | Partitions and boundaries | Decision table | State transition |
 |---|---|---|---|
-| High (money, safety, data loss, legal) | 3-value boundaries | Every feasible column | All transitions, invalid included |
+| High (money, safety, data loss, legal) | 3-value boundaries; MC/DC on compound decisions | Every feasible column | All transitions, invalid included |
 | Medium | 2-value boundaries | Minimized table; merged columns listed | Valid transitions, plus the invalid ones a real client can send |
 | Low | Each partition once (each-choice) | The columns for the main outcomes | All states |
 
