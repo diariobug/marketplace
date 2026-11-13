@@ -1,6 +1,6 @@
 ---
 name: test-planning
-description: Decides what testing a change or a codebase needs by test level (component, component integration, system, system integration, acceptance) and test type (functional, non-functional, black-box, white-box), with the test basis agreed with the user and risks ranked by likelihood and impact. Use it whenever code that will need tests is being written or changed - a new feature, command, endpoint or bug fix - even when the request only says to build or fix it and never mentions tests; the tests are planned here, with the user, before they are written. Also for reviewing the tests of a change that already happened ("is this PR tested enough?", "review the tests of this commit") and for assessing how an existing test suite covers a module or feature ("how well do our tests cover X?", "where are our testing gaps?"). Produces a risk-ranked plan or matrix with an explicit "not covered, and why" and leaves residual risk to a person.
+description: Decides what testing a change or a codebase needs by test level (component, component integration, system, system integration, acceptance) and test type (functional, non-functional, black-box, white-box), with the test basis agreed with the user and risks ranked by likelihood and impact. Use it whenever code that will need tests is being written or changed - a new feature, command, endpoint or bug fix - even when the request only says to build or fix it and never mentions tests; the tests are planned here, with the user, and written test-first (BDD/ATDD/TDD) when the code is too. Also for reviewing the tests of a change that already happened ("is this PR tested enough?", "review the tests of this commit") and for assessing how an existing test suite covers a module or feature ("how well do our tests cover X?", "where are our testing gaps?"). Produces a risk-ranked plan or matrix with an explicit "not covered, and why" and leaves residual risk to a person.
 license: CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
 ---
 
@@ -18,7 +18,8 @@ https://diariobug.com/los-tipos-de-prueba-que-evalua-cada-uno-y-como-elegirlos/
 
 Read the one file that matches the task, then follow its checklist:
 
-- **Planning or writing a change** (new tests, a feature, a bug fix): [workflows/plan.md](workflows/plan.md)
+- **Planning or writing a change** (new tests, a feature, a bug fix, or fixing what a review or
+  an assessment found): [workflows/plan.md](workflows/plan.md)
 - **Reviewing a change that already happened** (a diff, a commit, a pull request): [workflows/review.md](workflows/review.md)
 - **Assessing an existing test suite** (a module, a feature, a repository): [workflows/assess.md](workflows/assess.md)
 
@@ -83,6 +84,21 @@ unmet, write the residual risk down and stop. The syllabus allows ending without
 the exit criteria "if the stakeholders have reviewed and accepted the risk" (§5.1.3); you
 are not the stakeholders.
 
+**6. When you also write the code, the tests come first.** Two loops
+([workflows/plan.md](workflows/plan.md), step 6):
+- **Outer, acceptance (ATDD, BDD):** the examples the user confirmed become executable tests,
+  as Given/When/Then scenarios if the project uses BDD, and you run them against the code as
+  it is: they fail (red).
+- **Inner, components (TDD):** one small behavior at a time, red (a test that fails for the
+  reason it states, not an import error or a typo), green (the least code that passes it),
+  refactor (with the whole suite green).
+
+A bug fix starts with a test that reproduces the failure on the unfixed code. Keep each red
+run's output: it is the proof the test can fail. Work in small steps whatever the order: the
+studies Diario Bug reviews found the small, steady steps mattered more than test-first itself
+(https://diariobug.com/escribir-la-prueba-antes-que-el-codigo-tdd-atdd-y-bdd/), and test-first
+is how this skill keeps them small.
+
 ## Rules that apply everywhere
 
 - A component test isolates its component: no real database, network, file system or
@@ -117,11 +133,14 @@ are not the stakeholders.
 | "Coverage is high, so it is tested." | Coverage says what ran, not what was checked, and it cannot see a rule nobody programmed. |
 | "This risk is low; I will leave it out." | Leaving it out can be right; leaving it unlisted never is. Without a row, nobody can tell a decision from an oversight. |
 | "The exit criteria are almost met; I will call it done." | Accepting what is left is the stakeholders' call (§5.1.3). Write the residual risk down and stop. |
+| "I already know the implementation; I will write the tests with the code and break it afterwards to prove them." | The tests then follow the code you wrote, and the steps get large. A red run before the code costs nothing and proves the test fails for the reason it states. Breaking the code on purpose is the proof for code that already existed, not for code you are writing. |
 | "The model's answer looked right when I ran it." | That is one recorded run, evidence about judgment, not a test. Test the contract; list the run as evidence. |
 
 ## Signs it went wrong
 
 - A new test passed the first time it ran, and nobody has seen it fail.
+- Tests and the code they check were written in one step, and the tests first ran against the
+  finished code.
 - An expected value matches the code's output exactly, and no source or confirmed example
   gives it.
 - An existing test's expected value changed in the same change as the code it checks.
@@ -138,8 +157,9 @@ Show the evidence; do not describe it:
 - The test basis the user confirmed, with every question asked and its answer.
 - The risk table: every risk with a row, covered or not, and the reason for each "not
   covered".
-- For each new test, that it failed before it passed: the failing run, or the line you broke
-  on purpose to see it fail.
+- For each new test, that it failed before it passed. For code you wrote: the red run, before
+  the code existed, with its output. For tests of code that already existed (regression,
+  characterization): the failing run against a change you made on purpose and then reverted.
 - The suite run with branch coverage: the changed branches reached, and the ones not reached
   with why.
 - If a fresh-context subagent derived expected values: what it was given, and each

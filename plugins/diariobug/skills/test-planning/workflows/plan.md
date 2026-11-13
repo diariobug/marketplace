@@ -57,11 +57,21 @@ reason; every question about the test basis answered.
 
 **6. Write the tests,** highest risk first, in the project's conventions. When you also
 write the code, write the tests first, in two loops:
-- **Outer, at system or acceptance level:** each confirmed example becomes an executable
-  test (a Given/When/Then the user can read, if the project uses that style), seen failing
-  before the code exists.
-- **Inner, at component level:** test-driven development, "Tests are written first, then the
-  code is written to satisfy the tests, and then the tests and code are refactored" (§2.1.3), in small steps, each test seen failing first.
+- **Outer, at system or acceptance level (ATDD, BDD):** each confirmed example becomes an
+  executable test, derived from the acceptance criteria (§4.5.3), and is run against the code
+  as it is: it fails. If the project uses BDD (feature files, step definitions), write the
+  examples as scenarios in its format and in the user's words, one rule per scenario. If it
+  does not, write them as ordinary tests named after the behavior, with the Given/When/Then
+  as their arrange/act/assert; do not add a BDD framework the project does not use.
+- **Inner, at component level (TDD):** "Tests are written first, then the code is written to
+  satisfy the tests, and then the tests and code are refactored" (§2.1.3). One small behavior
+  per cycle: red (run it, see it fail for the reason the assertion states), green (the least
+  code that passes it, then the whole suite), refactor (only with the suite green; run it
+  again after). The next behavior starts a new cycle.
+
+Keep the output of each red run for the report. If a new test passes before you write the
+code for it, stop: either the behavior already exists (say so; it is a regression test now)
+or the test does not check what it claims.
 
 When the change is a bug fix, the first test is a confirmation test that reproduces the
 failure against the unfixed code; regression tests around the fix follow (§2.2.3).

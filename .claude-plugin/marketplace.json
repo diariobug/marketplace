@@ -10,7 +10,7 @@
     {
       "name": "diariobug",
       "description": "Testing skills from Diario Bug: plan tests by level and type, design test cases, review specs and designs, keep a regression suite healthy, and analyze how dependencies can fail.",
-      "version": "1.4.1",
+      "version": "1.4.2",
       "source": "./plugins/diariobug",
       "homepage": "https://diariobug.com/recursos/",
       "repository": "https://github.com/diariobug/marketplace",

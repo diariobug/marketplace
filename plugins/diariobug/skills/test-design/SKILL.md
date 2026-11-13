@@ -84,7 +84,9 @@ or a combination you settle yourself becomes a test that records your guess.
 hide a defect to save one: combine valid items freely, and put **one invalid item per case**,
 so that the first rejection does not mask the second (§4.2.4 states it for invalid transitions;
 the same reasoning applies to invalid partitions). Order the cases by the risk of what they
-cover.
+cover. When the cases are acceptance examples and the project uses BDD, write each one as a
+Given/When/Then scenario in the user's words, one rule per scenario; when the code is written
+next, these are the tests that come first (`test-planning`, core 6).
 
 **6. Expected results without the code.** Each case's expected result comes from the test basis
 or from an answer the user confirmed, and names its source. If you can start a subagent with a
