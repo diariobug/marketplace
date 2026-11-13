@@ -68,6 +68,8 @@ failure against the unfixed code; regression tests around the fix follow (§2.2.
 Per level:
 - Component: isolated, stubs for what it calls; black-box cases from the test basis
   (equivalence partitions, boundaries); white-box cases for the branches the change added.
+  When the `test-design-techniques` skill is available, use it to design each row's cases:
+  it chooses the technique from the shape of the rule and lists the coverage items.
 - Component integration: real collaborators inside the system, checking what crosses the
   interface.
 - System: through the system's own entry point (API, CLI, UI), in the project's

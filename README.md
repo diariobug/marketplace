@@ -11,6 +11,13 @@ first about new skills: [diariobug.com/recursos/](https://diariobug.com/recursos
   non-functional, black-box, white-box). Plans new tests, reviews a PR's
   tests, assesses a module's coverage. Ask your agent things like "is this PR
   tested enough?" or "plan the tests for this change".
+- **test-design-techniques** — design the cases themselves: equivalence
+  partitions, boundary values, decision tables, state transitions, branch
+  coverage read as a map, error guessing, exploratory charters. Chooses the
+  technique from the shape of the rule, numbers the coverage items, asks
+  about the gaps the design exposes, and takes every expected result from the
+  requirements, never from the code. Ask "what inputs should I test for
+  this?" or "design the tests for this rule".
 - **dependency-resilience-audit** — analyze how your system can fail through
   what it does not control (SDKs, APIs, cloud services, third-party scripts)
   with an STPA-based boundary analysis. Produces a report with loss
@@ -36,7 +43,8 @@ New skills ship with the articles that teach them; subscribers hear first.
 ```
 
 Update later with `/plugin update diariobug`. Skills are namespaced:
-`/diariobug:testing-by-level-and-type`, `/diariobug:dependency-resilience-audit`,
+`/diariobug:testing-by-level-and-type`, `/diariobug:test-design-techniques`,
+`/diariobug:dependency-resilience-audit`,
 `/diariobug:regression-strategy`, `/diariobug:artifact-review`.
 
 ## Install (Cursor, Codex, Gemini CLI, Copilot and other agents)
@@ -73,7 +81,7 @@ Los skills son gratuitos para todos. En **Claude Code**:
 /plugin install diariobug@diariobug
 ```
 
-El plugin instala los cuatro skills; actualízalo después con `/plugin update diariobug`.
+El plugin instala los cinco skills; actualízalo después con `/plugin update diariobug`.
 
 **Con Cursor, Codex, Gemini CLI, Copilot u otro agente de código**, el comando
 `npx skills add diariobug/marketplace` te deja elegir los skills y el agente donde instalarlos.
