@@ -1,3 +1,5 @@
+**English** | [Español](README.es.md)
+
 # Diario Bug marketplace
 
 Testing skills from [Diario Bug](https://diariobug.com) for your coding agent.
@@ -81,27 +83,9 @@ directory, or paste `SKILL.md` plus its `references/` and `workflows/` into
 your project's instructions. The subscriber kits on diariobug.com bundle the
 same folders with a PDF method guide.
 
-## En español: cómo instalar los skills
+## En español
 
-Los skills son gratuitos para todos. En **Claude Code**:
-
-```sh
-/plugin marketplace add diariobug/marketplace
-/plugin install diariobug@diariobug
-```
-
-El plugin instala los cinco skills; actualízalo después con `/plugin update diariobug`.
-
-**Con Cursor, Codex, Gemini CLI, Copilot u otro agente de código**, el comando
-`npx skills add diariobug/marketplace` te deja elegir los skills y el agente donde instalarlos.
-Sin Node.js, descarga este repositorio
-([ZIP](https://github.com/diariobug/marketplace/archive/refs/heads/main.zip)) y copia la
-carpeta del skill que quieras, por ejemplo `plugins/diariobug/skills/test-planning/`,
-a la carpeta de skills de tu agente. Si tu agente no admite skills, agrega el contenido de
-`SKILL.md`, con sus carpetas `references/` y `workflows/`, a las instrucciones de tu proyecto.
-
-Los kits completos, con la guía del método en PDF y las hojas de trabajo, son gratuitos
-para suscriptores: [diariobug.com/recursos/](https://diariobug.com/recursos/).
+Este README está en español, completo, en [README.es.md](README.es.md).
 
 ## Privacy
 
