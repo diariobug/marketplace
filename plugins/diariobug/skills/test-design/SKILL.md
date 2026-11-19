@@ -13,9 +13,11 @@ v4.0.1 (2024), chapter 4, cited as "§" below.
 
 ## Why this method
 
-Nothing can be tested exhaustively. A technique is a way to choose a small set of cases with a
-high chance of finding defects, and to say exactly what that set covers, so that what it leaves
-out is visible too (§4.1). Asked only to "write tests", an agent writes cases that follow no
+Exhaustive testing is impossible except in trivial cases (§1.3). Even where a loop could run
+every value of one input, each value needs an expected result, and most values exercise the
+same logic. A technique is a way to choose a small set of cases with a high chance of finding
+defects, and to say exactly what that set covers, so that what it leaves out is visible too
+(§4.1). Asked only to "write tests", an agent writes cases that follow no
 principle: the values look reasonable and their gaps are invisible. Told which technique fits
 and given the context, it designs well. The person's part is that context (the rule, the risk,
 what matters to the business) and the review of the result.
@@ -78,7 +80,10 @@ designed; an item no case exercises is a gap you can now see.
 **4. Ask the questions with examples.** Every coverage item the test basis does not settle
 becomes a question with a concrete case and your proposed answer: "A refund requested exactly
 7 days before the event: 50% (the 7–29 day band) or nothing?" Wait for the answers. A boundary
-or a combination you settle yourself becomes a test that records your guess.
+or a combination you settle yourself becomes a test that records your guess. When one value can
+break two rules at once (an amount with too many decimals that is also below the minimum), which
+rejection wins is a question too; once it is answered, that value is a precedence case of its
+own, designed in addition to the cases with one invalid item each.
 
 **5. Design the cases.** Cover the items with as few cases as the technique allows, but never
 hide a defect to save one: combine valid items freely, and put **one invalid item per case**,
@@ -181,7 +186,8 @@ marked "unverified guess" where it is used.>
 - Expected results read from the code or copied from what it returns.
 - Choosing a boundary, a combination's outcome or a forbidden transition's behavior yourself
   when the test basis is silent, instead of asking with an example.
-- Several invalid items in one case.
+- Several invalid items in one case, except a precedence case whose winner the test basis or
+  the user's answer settles (step 4).
 - Cases added only to raise a coverage number, with no behavior from the test basis behind
   them.
 
@@ -189,6 +195,7 @@ marked "unverified guess" where it is used.>
 
 | The thought | Why it fails |
 |---|---|
+| "A loop can test every value." | Each value then needs its expected result, and computing it inside the test rewrites the rule, defects included. Most values exercise the same logic, and one more input multiplies the count past what can run. Checking a property over many values (it never crashes; the fee is always 0 or 15) is different and worth doing: it needs no expected value per input. |
 | "These values look like good edge cases." | Without a technique nobody can say what the set covers, so nobody can see what it misses. List the items, then the cases. |
 | "The middle of the range is the safest value to test." | It is the least likely to find anything. The defects cluster where one partition ends and the next begins. |
 | "Two boundary values are enough here." | For a high-risk comparison, the value on the other side can catch an operator written wrong that two values miss (§4.2.2). Choose 2-value or 3-value by risk, and say which. |

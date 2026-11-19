@@ -83,8 +83,6 @@ cline skill update -g                                     # después, para actua
 carpeta del *skill* que quieras, por ejemplo `plugins/diariobug/skills/test-planning/`, a la
 carpeta de *skills* de tu agente. Si tu agente no admite *skills*, agrega el contenido de
 `SKILL.md`, con sus carpetas `references/` y `workflows/`, a las instrucciones de tu proyecto.
-Los kits para suscriptores en diariobug.com incluyen las mismas carpetas, con una guía del
-método en PDF.
 
 ## Privacidad
 

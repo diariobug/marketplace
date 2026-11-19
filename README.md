@@ -80,8 +80,7 @@ cline skill update -g                                     # later, to update
 
 No marketplace support? Copy the skill folder into your agent's skills
 directory, or paste `SKILL.md` plus its `references/` and `workflows/` into
-your project's instructions. The subscriber kits on diariobug.com bundle the
-same folders with a PDF method guide.
+your project's instructions.
 
 ## En español
 
